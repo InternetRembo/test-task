@@ -9,10 +9,9 @@ color: white;
   border-radius: 5px;
   border: none;
   font-size: 18px;
+  margin-top: 20px;
 `
 
-const Button = (props) => {
-    return <StyledButton {...props}/>
-}
+const Button = (props) => {return <StyledButton {...props}/>}
 
 export default Button;
