@@ -1,6 +1,16 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+
+const linkStyles = {
+  color: "gray",
+  textDecoration: "none",
+  active: {
+    color: "violet",
+    textDecoration: "none",
+  },
+};
 
 const Arrow = styled.div`
   display: inline-flex;
@@ -12,6 +22,9 @@ const Arrow = styled.div`
   margin-right: 15px;
 `;
 
+const isActiveLink = ({ isActive }) =>
+  isActive ? { ...linkStyles.active } : { ...linkStyles };
+
 const NavigationBar = () => {
   return (
     <Nav
@@ -19,35 +32,17 @@ const NavigationBar = () => {
       style={{ display: "flex", alignItems: "center" }}
       defaultActiveKey="shipping"
     >
-      <Nav.Item>
-        <Nav.Link
-          eventKey={"shipping"}
-          style={true ? { color: "violet" } : { color: "grey" }}
-          href="/shipping"
-        >
-          Shipping
-        </Nav.Link>
-      </Nav.Item>
+      <NavLink style={isActiveLink} to={"/"}>
+        Shipping
+      </NavLink>
       <Arrow />
-      <Nav.Item>
-        <Nav.Link
-          eventKey={"billing"}
-          style={false ? { color: "violet" } : { color: "grey" }}
-          href="/billing"
-        >
-          Billing
-        </Nav.Link>
-      </Nav.Item>
+      <NavLink style={isActiveLink} to={"/billing"}>
+        Billing
+      </NavLink>
       <Arrow />
-      <Nav.Item>
-        <Nav.Link
-          eventKey={"payment"}
-          style={false ? { color: "violet" } : { color: "grey" }}
-          href="/payment"
-        >
-          Payment
-        </Nav.Link>
-      </Nav.Item>
+      <NavLink style={isActiveLink} to={"/payment"}>
+        Payment
+      </NavLink>
     </Nav>
   );
 };

@@ -5,18 +5,25 @@ import Title from "../../reusableComponents/StyledTitle";
 import { Form } from "react-bootstrap";
 import AddressForm from "../addressForm/AddressForm";
 import Button from "../../reusableComponents/StyledButton";
+import Flex from "../../reusableComponents/Flex";
 
 const BillingBlock = () => {
   return (
     <StyledFormBlock>
       <Navbar />
-      <Title margin="10px 0 10px 0" size="26px" weight="200">
-        Billing Information
-      </Title>
+      <Flex justify="space-between" aling="center">
+        <Title margin="10px 0 10px 0" size="26px" weight="200">
+          Billing Information
+        </Title>
+
+        <Title decoration="underline" size="12px">
+          Same as shipping
+        </Title>
+      </Flex>
 
       <Form>
         <Form.Group controlId="formBasicName">
-          <Title margin="0 0 5px 0" size="20px">
+          <Title margin="0 0 5px 0" size="18px">
             Billing Contact
           </Title>
           <Form.Control className="mb-3" type="text" placeholder="Full name" />

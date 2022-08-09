@@ -1,7 +1,10 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import ShippingBlock from "./shippingBlock/ShippingBlock"
+import ShippingBlock from "./shippingBlock/ShippingBlock";
 import OrderSummaryBlock from "./orderSummaryBlock/OrderSummaryBlock";
+import { Route, Routes } from "react-router-dom";
+import BillingBlock from "./billingBlock/BillingBlock";
+import PaymentBlock from "./paymentBlock/PaymentBlock";
 
 const StyledMainContent = styled.div`
   border-radius: 5px;
@@ -18,15 +21,20 @@ export const StyledFormBlock = styled.div`
   height: 100%;
   padding: 15px 30px;
   font-family: Alef;
-`
+`;
 
-const MainContent = (props) => {
-    return <StyledMainContent>
+const MainContent = () => {
+  return (
+    <StyledMainContent>
+      <Routes>
+        <Route path="/" element={<ShippingBlock />} />
+        <Route path="/billing" element={<BillingBlock />} />
+        <Route path="/payment" element={<PaymentBlock />} />
+      </Routes>
 
-        <ShippingBlock/>
-        <OrderSummaryBlock/>
-
-          </StyledMainContent>
-}
+      <OrderSummaryBlock />
+    </StyledMainContent>
+  );
+};
 
 export default MainContent;

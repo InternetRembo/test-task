@@ -77,7 +77,9 @@ const OrderSummaryBlock = () => {
         style={{ position: "absolute", bottom: "5px", right: "10px" }}
       >
         All purchases are subject to our&nbsp;
-        <a style={{ textDecoration: "underline" }}>Terms and Conditions.</a>
+        <span style={{ textDecoration: "underline" }}>
+          Terms and Conditions.
+        </span>
       </StyledTitle>
     </StyledOrderSummaryBlock>
   );

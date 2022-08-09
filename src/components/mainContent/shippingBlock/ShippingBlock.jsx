@@ -19,7 +19,7 @@ const ShippingBlock = () => {
 
       <Form>
         <Form.Group controlId="formBasicName">
-          <Title margin="0 0 5px 0" size="20px">
+          <Title margin="0 0 5px 0" size="18px">
             {" "}
             Recipient{" "}
           </Title>
