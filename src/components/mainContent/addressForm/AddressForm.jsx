@@ -7,7 +7,7 @@ const AddressForm = () => {
   return (
     <div>
       <Form.Group controlId="formBasicAddress">
-        <Title margin="0 0 5px 0" size="20px">
+        <Title margin="0 0 5px 0" size="18px">
           Address
         </Title>
         <Form.Control
