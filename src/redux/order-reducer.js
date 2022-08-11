@@ -7,7 +7,7 @@ let initialState = {
   taxes: null,
 };
 
-const orderReducer = (state = initialState, action) => {
+const orderReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case SET_PRODUCT_LIST: {
       return { ...state, productList: action.productList };
@@ -17,16 +17,17 @@ const orderReducer = (state = initialState, action) => {
   }
 };
 
-export const setProductListAC = (productList) => {
+export function setProductListAC(productList) {
   return {
     type: SET_PRODUCT_LIST,
     productList,
   };
-};
-export const fetchProductListAC = () => {
+}
+
+export function fetchProductListAC() {
   return {
     type: FETCH_PRODUCT_LIST,
   };
-};
+}
 
 export default orderReducer;
