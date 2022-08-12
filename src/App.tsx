@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
 import { Header, MainContent } from './components';
@@ -15,7 +16,29 @@ const AppWrapper = styled.div`
   }
 `;
 
+type position = {
+  coords: {
+    latitude: number | null;
+    longitude: number | null;
+  };
+  timestamp: number | null;
+};
+
+const successCallback = (position: position) => {
+  console.log(position);
+};
+const errorCallback = (error: any) => {
+  console.log(error);
+};
+
+const getGeo = () => {
+  return navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+};
+
 function App() {
+  useEffect(() => {
+    getGeo();
+  }, []);
   return (
     <Provider store={store}>
       <AppWrapper>

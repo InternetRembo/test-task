@@ -8,7 +8,10 @@ const sagaMiddleware = createSagaMiddleware();
 
 let reducers = combineReducers({
   orderReducer: orderReducer,
-
 });
 export const store = createStore(reducers, applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(rootwatcher);
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;

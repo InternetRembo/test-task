@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import Flex from '../styled/StyledFlex';
 
 import { StyledBadge } from '../styled/StyledBadge';
 import { StyledHeader } from '../styled/StyledHeader';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../redux/hooks';
 
-const Header = () => {
-  const productsList = useSelector((state) => state.orderReducer.productList);
+const Header: FC = () => {
+  const productsList = useAppSelector((state) => state.orderReducer.productList);
   return (
     <StyledHeader>
       <Flex justify="space-between">
