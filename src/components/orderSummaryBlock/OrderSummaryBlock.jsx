@@ -1,43 +1,42 @@
-import React from "react";
-import styled from "styled-components";
-import Title from "../../reusableComponents/StyledTitle";
-import ProductInBasket from "./ProductInBasket/ProductInBasket";
-import StyledTitle from "../../reusableComponents/StyledTitle";
-import Flex from "../../reusableComponents/Flex";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProductListAC } from '../../redux/order-reducer';
 
-const StyledOrderSummaryBlock = styled.div`
-  background-color: #f5f1fc;
-  width: 40%;
-  padding: 30px 10px;
-  position: relative;
-`;
-const OrderInfoBlock = styled.div`
-  width: 100%;
-  height: 70px;
-  border-bottom: 1px solid grey;
-  color: grey;
-`;
-const TotalPrice = styled.div`
-  color: #4a0885;
-  font-weight: bold;
-  padding-top: 10px;
-`;
+import Title from '../../styled/StyledTitle';
+import { ProductInBasket } from '../index';
+import Flex from '../../styled/StyledFlex';
+import {
+  OrderInfoBlock,
+  StyledOrderSummaryBlock,
+  TotalPrice,
+} from '../../styled/orderSummaryBlock/StyledOrderSummaryBlock';
 
 const OrderSummaryBlock = () => {
+  const dispatch = useDispatch();
+
+  const productsList = useSelector((state) => state.orderReducer.productList);
+
+  useEffect(() => {
+    dispatch(fetchProductListAC());
+  }, []);
+
+  const getSubtotal = productsList.reduce((total, product) => total + product.price * product.quantity, 0);
+
+  const getShipping = productsList.length !== 0 ? productsList.length * 5 : 0;
+
   return (
     <StyledOrderSummaryBlock>
       <Title margin="0 0 10px 0">Order Summary</Title>
-      <ProductInBasket />
-      <ProductInBasket />
-      <ProductInBasket />
-
+      {productsList.map((el) => {
+        return <ProductInBasket key={el.name} props={el} />;
+      })}
       <OrderInfoBlock>
         <Flex margin="0 0 5px 0" justify="space-between">
           <Title size="14px" color="grey">
             Subtotal
           </Title>
           <Title size="14px" color="grey" famaly="Arial">
-            $30
+            ${getSubtotal}
           </Title>
         </Flex>
 
@@ -46,7 +45,7 @@ const OrderSummaryBlock = () => {
             Shipping
           </Title>
           <Title size="14px" color="grey" famaly="Arial">
-            $5
+            ${getShipping}
           </Title>
         </Flex>
 
@@ -55,31 +54,32 @@ const OrderSummaryBlock = () => {
             Taxes
           </Title>
           <Title size="14px" color="grey" famaly="Arial">
-            $35
+            ${getSubtotal * 0.2}
           </Title>
         </Flex>
       </OrderInfoBlock>
-
       <TotalPrice>
         <Flex justify="space-between">
           <Title weight="bold" size="14px" color="darckviolet">
             Total
           </Title>
           <Title size="14px" color="darckviolet" weight="bold" famaly="Arial">
-            sum
+            ${getSubtotal + getSubtotal * 0.2 + getShipping}
           </Title>
         </Flex>
       </TotalPrice>
 
-      <StyledTitle
+      <Title
         size="10px"
         color="grey"
-        style={{ position: "absolute", bottom: "5px", right: "10px" }}
+        margin="200px 0 0 0"
+        style={{ position: 'absolute', bottom: '5px', right: '20px' }}
       >
         All purchases are subject to our&nbsp;
-        <a style={{ textDecoration: "underline" }}>Terms and Conditions.</a>
-      </StyledTitle>
+        <span style={{ textDecoration: 'underline' }}>Terms and Conditions.</span>
+      </Title>
     </StyledOrderSummaryBlock>
   );
 };
+
 export default OrderSummaryBlock;

@@ -1,9 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import styled, {createGlobalStyle} from "styled-components";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createGlobalStyle } from "styled-components";
+import { BrowserRouter } from "react-router-dom";
 
 const Global = createGlobalStyle`
 * {
@@ -11,17 +13,19 @@ const Global = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
   font-family: Alef;
+  
 
 }
-`
+`;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-      <Global/>
+    <Global />
+    <BrowserRouter>
       <App />
+    </BrowserRouter>
   </>
-
 );
 
 // If you want to start measuring performance in your app, pass a function
