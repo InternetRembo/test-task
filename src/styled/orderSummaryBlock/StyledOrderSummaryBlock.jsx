@@ -10,6 +10,9 @@ export const StyledOrderSummaryBlock = styled.div`
     height: 100%;
     text-align: center;
   }
+  @media print {
+    margin-top: 100px;
+  }
 `;
 export const OrderInfoBlock = styled.div`
   width: 100%;
