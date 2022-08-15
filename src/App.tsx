@@ -1,20 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useEffect } from 'react';
-import styled from 'styled-components';
+import { Provider } from 'react-redux';
 
 import { Header, MainContent } from './components';
-import { Provider } from 'react-redux';
-import { store } from './redux/redux-store';
+import { AppWrapper } from './styled';
 
-const AppWrapper = styled.div`
-  min-width: 100vw;
-  min-height: 100vh;
-  padding: 0 2rem;
-  background-color: #e5e1ee;
-  @media (max-width: 576px) {
-    padding: 0 30px;
-  }
-`;
+import { store } from './redux/redux-store';
+import { fetchUserLocationAC } from './redux/order-reducer';
+import { useAppDispatch, useAppSelector } from './redux/hooks';
 
 type position = {
   coords: {
@@ -24,21 +17,28 @@ type position = {
   timestamp: number | null;
 };
 
-const successCallback = (position: position) => {
-  console.log(position);
-};
-const errorCallback = (error: any) => {
-  console.log(error);
-};
+const App: FC = () => {
+  const userLocation = useAppSelector((state) => state.orderReducer.userLocation);
+  const dispatch = useAppDispatch();
 
-const getGeo = () => {
-  return navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-};
+  const successCallback = (position: position) => {
+    dispatch(fetchUserLocationAC(position.coords.latitude, position.coords.longitude));
+  };
 
-function App() {
+  const errorCallback = (error: any) => {
+    console.log(error);
+  };
+
+  const getGeo = () => {
+    return navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  };
+
   useEffect(() => {
     getGeo();
+    return localStorage.clear();
   }, []);
+
+  console.log('userLocation', userLocation);
   return (
     <Provider store={store}>
       <AppWrapper>
@@ -47,6 +47,6 @@ function App() {
       </AppWrapper>
     </Provider>
   );
-}
+};
 
 export default App;

@@ -3,16 +3,10 @@ import { Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
-import Navbar from './Navbar';
-import Title from '../../styled/StyledTitle';
-import Button from '../../styled/StyledButton';
-import StyledTitle from '../../styled/StyledTitle';
-import Flex from '../../styled/StyledFlex';
-import AddressForm from './AddressForm';
-import { StyledFormBlock } from '../../styled/formBlock/StyledFormBlock';
+import { Navbar, AddressForm, ErrorBlock } from '../index';
+import { Title, Button, Flex, StyledFormBlock, StyledBox } from '../../styled';
 
 import { shippingValidate } from './validate';
-import ErrorBlock from './ErrorBlock';
 
 let initialValues = {
   name: '',
@@ -70,9 +64,7 @@ const ShippingBlock = () => {
             Recipient
           </Title>
 
-          {formik.errors.name && formik.touched.name ? (
-            <ErrorBlock error={formik.errors.name} target={refs.nameRef} />
-          ) : null}
+          {formik.errors.name && formik.touched.name && <ErrorBlock error={formik.errors.name} target={refs.nameRef} />}
 
           <Form.Control
             ref={refs.nameRef}
@@ -88,27 +80,28 @@ const ShippingBlock = () => {
         </Form.Group>
 
         <Form.Group>
-          {formik.errors.phone && formik.touched.phone ? (
+          {formik.errors.phone && formik.touched.phone && (
             <ErrorBlock error={formik.errors.phone} target={refs.phoneRef} />
-          ) : null}
+          )}
 
           <Flex>
-            <Form.Control
-              ref={refs.phoneRef}
-              className="mb-3"
-              style={{ display: 'inline-block', width: '180px' }}
-              type="text"
-              id="phone"
-              name="phone"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.phone}
-              placeholder="Daytime Phone"
-            />
+            <StyledBox width="180px">
+              <Form.Control
+                ref={refs.phoneRef}
+                className="mb-3"
+                type="text"
+                id="phone"
+                name="phone"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.phone}
+                placeholder="Daytime Phone"
+              />
+            </StyledBox>
 
-            <StyledTitle margin="0 0 0 10px" color="grey" size="14px" style={{ width: '100px' }}>
+            <Title margin="0 0 0 10px" color="grey" size="14px" style={{ width: '100px' }}>
               For delivery questions only
-            </StyledTitle>
+            </Title>
           </Flex>
 
           <AddressForm refs={refs} formik={formik} />

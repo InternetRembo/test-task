@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { StyledMainContent } from '../styled/StyledMainContent';
+import { StyledMainContent } from '../styled';
 import { ShippingBlock, OrderSummaryBlock, BillingBlock, PaymentBlock } from './index';
 import OrderInfo from './formBlock/OrderInfo';
 

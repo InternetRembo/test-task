@@ -3,14 +3,10 @@ import { Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
-import Navbar from './Navbar';
-import Title from '../../styled/StyledTitle';
-import AddressForm from './AddressForm';
-import Button from '../../styled/StyledButton';
-import Flex from '../../styled/StyledFlex';
-import { StyledFormBlock } from '../../styled/formBlock/StyledFormBlock';
+import { Navbar, AddressForm, ErrorBlock } from '../index';
+import { Title, Flex, StyledFormBlock, Button } from '../../styled';
+
 import { billingValidate } from './validate';
-import ErrorBlock from './ErrorBlock';
 
 let initialValues = {
   name: '',
@@ -91,9 +87,7 @@ const BillingBlock = () => {
             Billing Contact
           </Title>
 
-          {formik.errors.name && formik.touched.name ? (
-            <ErrorBlock error={formik.errors.name} target={refs.nameRef} />
-          ) : null}
+          {formik.errors.name && formik.touched.name && <ErrorBlock error={formik.errors.name} target={refs.nameRef} />}
 
           <Form.Control
             ref={refs.nameRef}
@@ -108,9 +102,9 @@ const BillingBlock = () => {
           />
         </Form.Group>
         <Form.Group>
-          {formik.errors.email && formik.touched.email ? (
+          {formik.errors.email && formik.touched.email && (
             <ErrorBlock error={formik.errors.email} target={refs.emailRef} />
-          ) : null}
+          )}
 
           <Form.Control
             ref={refs.emailRef}

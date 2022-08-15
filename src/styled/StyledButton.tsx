@@ -17,7 +17,11 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = (props) => {
+type ButtonProps = {
+  children: string;
+};
+
+const Button = (props: ButtonProps) => {
   return <StyledButton {...props} />;
 };
 

@@ -1,9 +1,8 @@
 import React from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
 
-import Title from '../../styled/StyledTitle';
-import Flex from '../../styled/StyledFlex';
-import ErrorBlock from './ErrorBlock';
+import { Title, Flex } from '../../styled';
+import { ErrorBlock } from '../index';
 
 const AddressForm = ({ formik, refs }) => (
   <div>
@@ -12,9 +11,9 @@ const AddressForm = ({ formik, refs }) => (
         Address
       </Title>
 
-      {formik.errors.street && formik.touched.street ? (
+      {formik.errors.street && formik.touched.street && (
         <ErrorBlock error={formik.errors.street} target={refs.streetRef} />
-      ) : null}
+      )}
 
       <Form.Control
         ref={refs.streetRef}
@@ -44,9 +43,7 @@ const AddressForm = ({ formik, refs }) => (
 
     <Form.Group>
       <InputGroup className="mb-3">
-        {formik.errors.city && formik.touched.city ? (
-          <ErrorBlock error={formik.errors.city} target={refs.cityRef} />
-        ) : null}
+        {formik.errors.city && formik.touched.city && <ErrorBlock error={formik.errors.city} target={refs.cityRef} />}
 
         <Form.Control
           ref={refs.cityRef}
@@ -65,9 +62,9 @@ const AddressForm = ({ formik, refs }) => (
       </InputGroup>
     </Form.Group>
 
-    {formik.errors.country && formik.touched.country ? (
+    {formik.errors.country && formik.touched.country && (
       <ErrorBlock error={formik.errors.country} target={refs.countryRef} />
-    ) : null}
+    )}
 
     <Flex>
       <Form.Select
@@ -88,7 +85,7 @@ const AddressForm = ({ formik, refs }) => (
       </Form.Select>
 
       <Form.Group>
-        {formik.errors.zip && formik.touched.zip ? <ErrorBlock error={formik.errors.zip} target={refs.zipRef} /> : null}
+        {formik.errors.zip && formik.touched.zip && <ErrorBlock error={formik.errors.zip} target={refs.zipRef} />}
 
         <Form.Control
           ref={refs.zipRef}

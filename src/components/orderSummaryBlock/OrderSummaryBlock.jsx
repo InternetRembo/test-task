@@ -28,7 +28,16 @@ const OrderSummaryBlock = () => {
     <StyledOrderSummaryBlock>
       <Title margin="0 0 10px 0">Order Summary</Title>
       {productsList.map((el) => {
-        return <ProductInBasket key={el.name} props={el} />;
+        return (
+          <ProductInBasket
+            key={el.name}
+            name={el.name}
+            img={el.img}
+            price={el.price}
+            quantity={el.quantity}
+            summary={el.summary}
+          />
+        );
       })}
       <OrderInfoBlock>
         <Flex margin="0 0 5px 0" justify="space-between">
@@ -69,14 +78,11 @@ const OrderSummaryBlock = () => {
         </Flex>
       </TotalPrice>
 
-      <Title
-        size="10px"
-        color="grey"
-        margin="200px 0 0 0"
-        style={{ position: 'absolute', bottom: '5px', right: '20px' }}
-      >
+      <Title size="10px" position="absolute" bottom="5px" right="0px" color="grey" margin="200px 0 0 0">
         All purchases are subject to our&nbsp;
-        <span style={{ textDecoration: 'underline' }}>Terms and Conditions.</span>
+        <Title display="inline-block" size="10px" decoration="underline">
+          Terms and Conditions.
+        </Title>
       </Title>
     </StyledOrderSummaryBlock>
   );

@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
-export const StyledFormBlock = styled.div`
+type StyledFormProps = {
+  padding?: string;
+};
+
+export const StyledFormBlock = styled.div<StyledFormProps>`
   background-color: white;
   width: 60%;
   height: 100%;
-  padding: 15px 30px;
+  padding: ${(props) => props.padding || '15px 30px'};
   font-family: Alef;
 
   @media (max-width: 576px) {

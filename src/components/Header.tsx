@@ -1,10 +1,8 @@
 import React, { FC } from 'react';
+import { useAppSelector } from '../redux/hooks';
 
 import Flex from '../styled/StyledFlex';
-
-import { StyledBadge } from '../styled/StyledBadge';
-import { StyledHeader } from '../styled/StyledHeader';
-import { useAppSelector } from '../redux/hooks';
+import { StyledBadge, StyledHeader, Title, StyledBox } from '../styled';
 
 const Header: FC = () => {
   const productsList = useAppSelector((state) => state.orderReducer.productList);
@@ -12,17 +10,19 @@ const Header: FC = () => {
     <StyledHeader>
       <Flex justify="space-between">
         <Flex aling="center">
-          <i style={{ fontSize: '24px' }} className="bi bi-code-slash" />
+          <Title color="violet" size="24px">
+            <i className="bi bi-code-slash" />
+          </Title>
           &nbsp;Front-end Developer Test Task
         </Flex>
 
-        <div style={{ position: 'relative' }}>
+        <StyledBox width="56px" display="inline" position="relative">
           cart&nbsp;
           <i className="bi bi-cart3" />
           <StyledBadge top="-5px" right="-10px">
             {productsList.length}
           </StyledBadge>
-        </div>
+        </StyledBox>
       </Flex>
     </StyledHeader>
   );

@@ -1,15 +1,14 @@
 import React from 'react';
 
-import Title from '../../styled/StyledTitle';
-import { StyledFormBlock } from '../../styled/formBlock/StyledFormBlock';
+import { StyledFormBlock, Title } from '../../styled';
 
 let billingData = localStorage.getItem('billingData');
 billingData = JSON.parse(billingData);
 
-let userEmail = billingData.email;
+let userEmail = billingData ? billingData.email : 'email';
 
 const OrderInfo = () => (
-  <StyledFormBlock style={{ paddingTop: '40px' }}>
+  <StyledFormBlock padding="40px 30px 0 30px">
     <Title margin="10px 0 10px 0" size="26px" weight="200">
       Thank you for your order!
     </Title>
@@ -20,14 +19,20 @@ const OrderInfo = () => (
 
     <Title margin="10px 0 10px 0" size="16px" color="black" weight="200">
       Your will recieve an email confirmation shortly to: &nbsp;
-      <span style={{ textDecoration: 'underline', color: 'blueviolet' }}>{userEmail}</span>
+      <Title size="16px" decoration="underline" color="blueviolet">
+        {userEmail}
+      </Title>
     </Title>
 
     <Title margin="30px 0 30px 0" size="18px" color="black" weight="200">
-      Estimated delivery day is <br /> <span style={{ fontWeight: 'bold' }}> Friday 2 April 2022 </span>
+      Estimated delivery day is <br />
+      <Title size="18px" weight="bold">
+        Friday 2 April 2022
+      </Title>
     </Title>
 
     <Title
+      display="block"
       onClick={() => {
         window.print();
       }}
