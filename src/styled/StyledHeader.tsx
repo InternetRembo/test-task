@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from './colors';
+import { media } from './media';
 
 export const StyledHeader = styled.div`
   margin: 0 auto 40px;
@@ -12,11 +13,12 @@ export const StyledHeader = styled.div`
   box-shadow: 1px 1px 1px ${colors.secondaryLight};
   font-size: 18px;
   color: ${colors.textHeader};
-  @media (max-width: 768px) {
+
+  @media (max-width: ${media.sm}) {
     padding: 10px 50px;
     font-size: 14px;
   }
-  @media (max-width: 576px) {
+  @media (max-width: ${media.xs}) {
     padding: 10px 20px;
   }
 `;

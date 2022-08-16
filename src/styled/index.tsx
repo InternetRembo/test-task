@@ -13,6 +13,7 @@ import { StyledErrorBlock } from './formBlock/StyledErrorBlock';
 import { StyledFormBlock } from './formBlock/StyledFormBlock';
 import { StyledLink } from './formBlock/StyledLink';
 import { OrderInfoBlock, TotalPrice } from './orderSummaryBlock/StyledOrderSummaryBlock';
+import { Global } from './GlobalStyles';
 
 export {
   Arrow,
@@ -31,4 +32,5 @@ export {
   StyledLink,
   OrderInfoBlock,
   TotalPrice,
+  Global,
 };

@@ -1,24 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+
 import reportWebVitals from './reportWebVitals';
-import { createGlobalStyle } from 'styled-components';
 
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import { Global } from './styled';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
-import { Provider } from 'react-redux';
 import { store } from './redux/redux-store';
-
-const Global = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Alef;
-  }
-`;
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

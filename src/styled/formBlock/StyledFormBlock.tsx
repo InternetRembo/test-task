@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../colors';
+import { media } from '../media';
 
 type StyledFormProps = {
   padding?: string;
@@ -12,7 +13,7 @@ export const StyledFormBlock = styled.div<StyledFormProps>`
   padding: ${(props) => props.padding || '15px 30px'};
   font-family: Alef;
 
-  @media (max-width: 576px) {
+  @media (max-width: ${media.xs}) {
     width: 90vw;
     display: flex;
     flex-direction: column;

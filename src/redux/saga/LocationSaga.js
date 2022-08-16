@@ -1,6 +1,6 @@
 import { put, takeEvery, call, select } from 'redux-saga/effects';
 import { FETCH_USER_LOCATION, getUserLocationAC } from '../order-reducer';
-import { getUserLocation } from '../api/api';
+import { getUserLocation } from '../api';
 
 function* getUserLocationWorker() {
   let coords = yield select((state) => state.orderReducer.coords);

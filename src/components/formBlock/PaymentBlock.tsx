@@ -7,7 +7,7 @@ import { StyledBadge, Title, Button, Flex, StyledFormBlock, StyledBox } from '..
 import { Navbar, ErrorBlock } from '../index';
 
 import { paymentValidate } from './validate';
-import { setUsersData } from '../../redux/api/api';
+import { setUsersData } from '../../redux/api';
 import { BillingValues, ShippingValues } from '../../types/formTypes';
 
 const initialValues = {

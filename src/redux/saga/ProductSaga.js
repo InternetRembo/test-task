@@ -1,6 +1,6 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 import { FETCH_PRODUCT_LIST, setProductListAC } from '../order-reducer';
-import { fetchProducts } from '../api/api';
+import { fetchProducts } from '../api';
 
 function* getProductListWorker() {
   const result = yield call(fetchProducts);
