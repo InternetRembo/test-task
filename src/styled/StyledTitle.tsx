@@ -14,6 +14,7 @@ type TitleProps = {
   bottom?: string | number;
   right?: string | number;
   children?: string | number | ReactElement | (string | ReactElement | JSX.Element | number)[];
+  onClick?: () => void;
 };
 
 const StyledTitle = styled.span<TitleProps>`

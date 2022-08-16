@@ -1,27 +1,39 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchProductListAC } from '../../redux/order-reducer';
 
 import { TotalPrice, StyledOrderSummaryBlock, Title, OrderInfoBlock, Flex } from '../../styled';
 import { ProductInBasket } from '../index';
+import { useAppSelector } from '../../redux/hooks';
 
 const OrderSummaryBlock = () => {
   const dispatch = useDispatch();
 
-  const productsList = useSelector((state) => state.orderReducer.productList);
+  const productsList = useAppSelector((state) => state.orderReducer.productList);
 
   useEffect(() => {
     dispatch(fetchProductListAC());
   }, []);
 
-  const getSubtotal = productsList.reduce((total, product) => total + product.price * product.quantity, 0);
+  type product = {
+    name: string;
+    price: number;
+    summary: string;
+    img: string;
+    quantity: number;
+  };
+
+  const getSubtotal = productsList.reduce(
+    (total: number, product: product) => total + product.price * product.quantity,
+    0,
+  );
 
   const getShipping = productsList.length !== 0 ? productsList.length * 5 : 0;
 
   return (
     <StyledOrderSummaryBlock>
       <Title margin="0 0 10px 0">Order Summary</Title>
-      {productsList.map((el) => {
+      {productsList.map((el: product) => {
         return (
           <ProductInBasket
             key={el.name}

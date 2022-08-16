@@ -7,6 +7,7 @@ import { Navbar, AddressForm, ErrorBlock } from '../index';
 import { Title, Flex, StyledFormBlock, Button } from '../../styled';
 
 import { billingValidate } from './validate';
+import { BillingValues, ShippingValues } from '../../types/formTypes';
 
 let initialValues = {
   name: '',
@@ -29,7 +30,7 @@ const BillingBlock = () => {
     countryRef: useRef(null),
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: BillingValues) => {
     let billingData = {
       name: values.name,
       email: formik.values.email,
@@ -52,14 +53,14 @@ const BillingBlock = () => {
 
   const setSameAsShipping = () => {
     let shippingData = localStorage.getItem('shippingData');
-    shippingData = JSON.parse(shippingData);
+    let ParseShippingData: ShippingValues = JSON.parse(shippingData!);
 
-    formik.setFieldValue('name', shippingData.name);
-    formik.setFieldValue('street', shippingData.street);
-    formik.setFieldValue('additionalInfo', shippingData.additionalInfo);
-    formik.setFieldValue('city', shippingData.city);
-    formik.setFieldValue('country', shippingData.country);
-    formik.setFieldValue('zip', shippingData.zip);
+    formik.setFieldValue('name', ParseShippingData.name);
+    formik.setFieldValue('street', ParseShippingData.street);
+    formik.setFieldValue('additionalInfo', ParseShippingData.additionalInfo);
+    formik.setFieldValue('city', ParseShippingData.city);
+    formik.setFieldValue('country', ParseShippingData.country);
+    formik.setFieldValue('zip', ParseShippingData.zip);
   };
 
   return (

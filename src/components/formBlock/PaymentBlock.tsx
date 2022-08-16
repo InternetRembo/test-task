@@ -8,6 +8,7 @@ import { Navbar, ErrorBlock } from '../index';
 
 import { paymentValidate } from './validate';
 import { setUsersData } from '../../redux/api/api';
+import { BillingValues, ShippingValues } from '../../types/formTypes';
 
 const initialValues = {
   cardholderName: '',
@@ -26,14 +27,14 @@ const PaymentBlock = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = async (values) => {
+  const onSubmit = () => {
     let shippingData = localStorage.getItem('shippingData');
-    shippingData = JSON.parse(shippingData);
+    let ParseShippingData: ShippingValues = JSON.parse(shippingData!);
     let billingData = localStorage.getItem('billingData');
-    billingData = JSON.parse(billingData);
+    let ParseBillingData: BillingValues = JSON.parse(billingData!);
     let paymentData = { ...formik.values };
 
-    setUsersData(shippingData, billingData, paymentData);
+    setUsersData(ParseShippingData, ParseBillingData, paymentData);
 
     navigate('/order');
   };
@@ -51,7 +52,7 @@ const PaymentBlock = () => {
       </Title>
 
       <Title famaly="none" color="grey" margin="0px 0 15px 0" size="16px">
-        <Title position="relative" color="black" fontSize="22px">
+        <Title position="relative" color="black" size="22px">
           <i className="bi bi-lock">
             <StyledBadge bgColor="#00e600" width="12px" height="12px" top="13px" right="-2px">
               <i className="bi bi-check" />

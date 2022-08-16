@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { StyledFormBlock, Title } from '../../styled';
+import { BillingValues } from '../../types/formTypes';
 
 let billingData = localStorage.getItem('billingData');
 
-billingData = JSON.parse(billingData);
+let ParseBillingData: BillingValues = JSON.parse(billingData!);
 
-let userEmail = billingData ? billingData.email : 'email';
+let userEmail = billingData ? ParseBillingData.email : 'email';
 
 const OrderInfo = () => (
   <StyledFormBlock padding="40px 30px 0 30px">

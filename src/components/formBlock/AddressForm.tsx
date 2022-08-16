@@ -1,12 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { RefObject, useEffect } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
+import { useAppSelector } from '../../redux/hooks';
 
 import { Title, Flex } from '../../styled';
 import { ErrorBlock } from '../index';
-import { useSelector } from 'react-redux';
 
-const AddressForm = ({ formik, refs }) => {
-  const userLocation = useSelector((state) => state.orderReducer.userLocation);
+type AddressProps = {
+  formik: any;
+  refs: {
+    streetRef: RefObject<HTMLInputElement>;
+    cityRef: RefObject<HTMLInputElement>;
+    countryRef: RefObject<HTMLSelectElement>;
+    zipRef: RefObject<HTMLInputElement>;
+  };
+};
+
+const AddressForm = ({ formik, refs }: AddressProps) => {
+  const userLocation = useAppSelector((state) => state.orderReducer.userLocation);
 
   const setUserAddress = () => {
     formik.setFieldValue('additionalInfo', userLocation.flat || '');

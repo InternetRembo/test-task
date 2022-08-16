@@ -20,6 +20,7 @@ const StyledButton = styled.button`
 
 type ButtonProps = {
   children: string;
+  type?: 'button' | 'submit' | 'reset' | undefined;
 };
 
 const Button = (props: ButtonProps) => {

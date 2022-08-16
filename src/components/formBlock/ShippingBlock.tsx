@@ -7,6 +7,7 @@ import { Navbar, AddressForm, ErrorBlock } from '../index';
 import { Title, Button, Flex, StyledFormBlock, StyledBox } from '../../styled';
 
 import { shippingValidate } from './validate';
+import { ShippingValues } from '../../types/formTypes';
 
 let initialValues = {
   name: '',
@@ -29,7 +30,7 @@ const ShippingBlock = () => {
     countryRef: useRef(null),
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: ShippingValues) => {
     let shippingData = {
       name: values.name,
       phone: values.phone,
@@ -98,10 +99,11 @@ const ShippingBlock = () => {
                 placeholder="Daytime Phone"
               />
             </StyledBox>
-
-            <Title margin="0 0 0 10px" color="grey" size="14px" style={{ width: '100px' }}>
-              For delivery questions only
-            </Title>
+            <StyledBox width="150px">
+              <Title margin="0 0 0 10px" color="grey" size="14px">
+                For delivery questions only
+              </Title>
+            </StyledBox>
           </Flex>
 
           <AddressForm refs={refs} formik={formik} />
