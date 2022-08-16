@@ -3,6 +3,7 @@ import React from 'react';
 import { StyledFormBlock, Title } from '../../styled';
 
 let billingData = localStorage.getItem('billingData');
+
 billingData = JSON.parse(billingData);
 
 let userEmail = billingData ? billingData.email : 'email';

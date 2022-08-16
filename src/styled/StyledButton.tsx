@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { colors } from './colors';
 
 const StyledButton = styled.button`
-  color: white;
-  background-color: blueviolet;
+  color: ${colors.backgroundMain};
+  background-color: ${colors.textMain};
   width: 200px;
   height: 46px;
   border-radius: 5px;

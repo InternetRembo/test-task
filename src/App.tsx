@@ -7,7 +7,7 @@ import { AppWrapper } from './styled';
 
 import { store } from './redux/redux-store';
 import { fetchUserLocationAC } from './redux/order-reducer';
-import { useAppDispatch, useAppSelector } from './redux/hooks';
+import { useAppDispatch } from './redux/hooks';
 
 type position = {
   coords: {
@@ -18,7 +18,6 @@ type position = {
 };
 
 const App: FC = () => {
-  const userLocation = useAppSelector((state) => state.orderReducer.userLocation);
   const dispatch = useAppDispatch();
 
   const successCallback = (position: position) => {
@@ -38,7 +37,6 @@ const App: FC = () => {
     return localStorage.clear();
   }, []);
 
-  console.log('userLocation', userLocation);
   return (
     <Provider store={store}>
       <AppWrapper>

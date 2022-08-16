@@ -12,6 +12,7 @@ import { StyledProduct } from './orderSummaryBlock/StyledProductInBasket';
 import { StyledErrorBlock } from './formBlock/StyledErrorBlock';
 import { StyledFormBlock } from './formBlock/StyledFormBlock';
 import { StyledLink } from './formBlock/StyledLink';
+import { OrderInfoBlock, TotalPrice } from './orderSummaryBlock/StyledOrderSummaryBlock';
 
 export {
   Arrow,
@@ -28,4 +29,6 @@ export {
   StyledErrorBlock,
   StyledFormBlock,
   StyledLink,
+  OrderInfoBlock,
+  TotalPrice,
 };

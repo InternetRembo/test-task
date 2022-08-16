@@ -4,8 +4,37 @@ import { getUserLocation } from '../api/api';
 
 function* getUserLocationWorker() {
   let coords = yield select((state) => state.orderReducer.coords);
+
   const result = yield call(getUserLocation, coords);
-  yield put(getUserLocationAC(result.data.results));
+
+  let address = {};
+
+  result.data.results[0]['address_components'].forEach((el) => {
+    switch (el.types[0]) {
+      case 'street_number': {
+        address.flat = el.long_name;
+        break;
+      }
+      case 'route': {
+        address.street = el.long_name;
+        break;
+      }
+      case 'locality': {
+        address.city = el.long_name;
+        break;
+      }
+      case 'country': {
+        address.country = el.long_name;
+        break;
+      }
+      case 'postal_code': {
+        address.zip = el.long_name;
+        break;
+      }
+    }
+  });
+
+  yield put(getUserLocationAC(address));
 }
 
 export function* getUserLocationWatcher() {

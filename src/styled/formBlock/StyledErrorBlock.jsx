@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../colors';
 
 export const StyledErrorBlock = styled.div`
   display: flex;
@@ -7,9 +8,9 @@ export const StyledErrorBlock = styled.div`
   font-size:14px;
   margin:0 0 5px 5px;
   position: absolute;
-  background-color: white;
+  background-color: ${colors.backgroundMain};
   padding: 2px 10px;
-  color: red;
-  box-shadow:2px 2px 2px 2px grey;
+  color: ${colors.danger};
+  box-shadow:2px 2px 2px 2px ${colors.secondary};;
   border-radius: 5px;
 ...props.style`;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from './colors';
 
 export type BadgeProps = {
   width?: string;
@@ -9,7 +10,7 @@ export type BadgeProps = {
 };
 
 export const StyledBadge = styled.span<BadgeProps>`
-  background-color: ${({ bgColor }) => bgColor || '#f83d6b'};
+  background-color: ${({ bgColor }) => bgColor || colors.danger};
   display: flex;
   align-items: center;
   font-family: Arial;
@@ -17,7 +18,7 @@ export const StyledBadge = styled.span<BadgeProps>`
   text-align: center;
   justify-content: center;
   border-radius: 50%;
-  color: white;
+  color: ${colors.backgroundMain};
   width: ${({ width }) => width || '15px;'};
   height: ${({ height }) => height || '15px;'};
   position: absolute;

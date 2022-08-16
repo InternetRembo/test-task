@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { colors } from '../colors';
 
 export const StyledOrderSummaryBlock = styled.div`
-  background-color: #f5f1fc;
+  background-color: ${colors.backgroundSecondary};
   width: 40%;
   padding: 30px 10px;
   position: relative;
@@ -17,14 +18,14 @@ export const StyledOrderSummaryBlock = styled.div`
 export const OrderInfoBlock = styled.div`
   width: 100%;
   height: 70px;
-  border-bottom: 1px solid grey;
-  color: grey;
+  border-bottom: ${colors.secondary};
+  color: ${colors.secondary};
   @media (max-width: 610px) {
     padding: 0 10% 0 10%;
   }
 `;
 export const TotalPrice = styled.div`
-  color: #4a0885;
+  color: ${colors.textMain};
   font-weight: bold;
   padding-top: 10px;
   @media (max-width: 576px) {

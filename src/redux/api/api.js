@@ -17,6 +17,6 @@ export const setUsersData = (shippingData, billingData, paymentData) => {
 
 export const getUserLocation = (coords) => {
   return axios.get(
-    `https://maps.googleapis.com/maps/api/geocode/json?result_type=country|postal_code|locality|street_address&language=en&latlng=${52.2262028},${21.0108905}&key=AIzaSyCNwYQmw-kbeotD-GYimnmchEAUpE6-ALs`,
+    `https://maps.googleapis.com/maps/api/geocode/json?result_type=country|postal_code|locality|street_address&language=en&latlng=${coords.lat},${coords.lon}&key=AIzaSyCNwYQmw-kbeotD-GYimnmchEAUpE6-ALs`,
   );
 };

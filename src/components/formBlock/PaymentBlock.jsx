@@ -42,6 +42,7 @@ const PaymentBlock = () => {
     validate: paymentValidate,
     onSubmit: onSubmit,
   });
+
   return (
     <StyledFormBlock>
       <Navbar />

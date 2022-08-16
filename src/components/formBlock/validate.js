@@ -31,7 +31,7 @@ export const shippingValidate = (values) => {
     errors.city = 'Please enter city';
   } else if (!isValidData(values.city)) {
     errors.city = 'Invalid city name';
-  } else if (values.city.length < 3 || values.city.length > 12) {
+  } else if (values.city.length < 3 || values.city.length > 18) {
     errors.city = 'Invalid city length';
   }
 
@@ -73,7 +73,7 @@ export const billingValidate = (values) => {
     errors.city = 'Please enter city';
   } else if (!isValidData(values.city)) {
     errors.city = 'Invalid city name';
-  } else if (values.city.length < 3 || values.city.length > 12) {
+  } else if (values.city.length < 3 || values.city.length > 18) {
     errors.city = 'Invalid city length';
   }
 

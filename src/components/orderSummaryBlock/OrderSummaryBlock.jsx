@@ -2,14 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductListAC } from '../../redux/order-reducer';
 
-import Title from '../../styled/StyledTitle';
+import { TotalPrice, StyledOrderSummaryBlock, Title, OrderInfoBlock, Flex } from '../../styled';
 import { ProductInBasket } from '../index';
-import Flex from '../../styled/StyledFlex';
-import {
-  OrderInfoBlock,
-  StyledOrderSummaryBlock,
-  TotalPrice,
-} from '../../styled/orderSummaryBlock/StyledOrderSummaryBlock';
 
 const OrderSummaryBlock = () => {
   const dispatch = useDispatch();

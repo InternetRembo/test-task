@@ -7,7 +7,13 @@ let initialState = {
   productList: [],
   shipping: null,
   taxes: null,
-  userLocation: null,
+  userLocation: {
+    flat: '',
+    street: '',
+    city: '',
+    country: '',
+    zip: '',
+  },
   coords: { lat: 0, lng: 0 },
 };
 

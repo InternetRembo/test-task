@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../colors';
 
 export const StyledProduct = styled.div`
   width: 100%;
@@ -21,12 +22,12 @@ export const StyledProduct = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid ${colors.secondary};
     margin-bottom: 5px;
   }
 
   img {
-    border: 1px solid grey;
+    border: 1px solid ${colors.secondary};
     padding: 2px;
     width: 50px;
     height: 50px;

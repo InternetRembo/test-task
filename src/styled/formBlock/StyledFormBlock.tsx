@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { colors } from '../colors';
 
 type StyledFormProps = {
   padding?: string;
 };
 
 export const StyledFormBlock = styled.div<StyledFormProps>`
-  background-color: white;
+  background-color: ${colors.backgroundMain};
   width: 60%;
   height: 100%;
   padding: ${(props) => props.padding || '15px 30px'};
