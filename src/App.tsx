@@ -6,7 +6,7 @@ import { Header, MainContent } from './components';
 import { AppWrapper } from './styled';
 
 import { store } from './redux/redux-store';
-import { fetchUserLocationAC } from './redux/order-reducer';
+import { getUserCoordinatesAC } from './redux/order-reducer';
 import { useAppDispatch } from './redux/hooks';
 
 type position = {
@@ -21,7 +21,7 @@ const App: FC = () => {
   const dispatch = useAppDispatch();
 
   const successCallback = (position: position) => {
-    dispatch(fetchUserLocationAC(position.coords.latitude, position.coords.longitude));
+    dispatch(getUserCoordinatesAC({ lat: position.coords.latitude, lng: position.coords.longitude }));
   };
 
   const errorCallback = (error: any) => {

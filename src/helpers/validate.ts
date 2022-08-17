@@ -1,7 +1,23 @@
-import { isValidData, isValidEmail, isValidNum, isValidUppercase } from '../../helpers/validators';
+import {
+  BillingErrors,
+  BillingValues,
+  PaymentErrors,
+  PaymentValues,
+  ShippingErrors,
+  ShippingValues,
+} from '../types/formTypes';
 
-export const shippingValidate = (values) => {
-  let errors = {};
+const isValidData = (data: string) => /^[a-zA-Z\s]+$/.test(data);
+
+const isValidUppercase = (data: string) => /^[A-Z\s]+$/.test(data);
+
+const isValidNum = (data: string) => /^[0-9]+$/.test(data);
+
+const isValidEmail = (data: string) =>
+  /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(data);
+
+export const shippingValidate = (values: ShippingValues) => {
+  let errors: ShippingErrors = {};
 
   if (!values.name) {
     errors.name = 'Please  enter your name';
@@ -50,8 +66,8 @@ export const shippingValidate = (values) => {
   return errors;
 };
 
-export const billingValidate = (values) => {
-  let errors = {};
+export const billingValidate = (values: BillingValues) => {
+  let errors: BillingErrors = {};
 
   if (!values.name) {
     errors.name = 'Please  enter your name';
@@ -99,8 +115,8 @@ export const billingValidate = (values) => {
   return errors;
 };
 
-export const paymentValidate = (values) => {
-  let errors = {};
+export const paymentValidate = (values: PaymentValues) => {
+  let errors: PaymentErrors = {};
 
   if (!values.cardholderName) {
     errors.cardholderName = 'Please enter cardholder Name';

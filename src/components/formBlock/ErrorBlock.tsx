@@ -9,8 +9,6 @@ type ErorProps = {
 };
 
 const ErrorBlock = ({ target, error }: ErorProps) => {
-  console.log('target', target);
-  console.log('error', error);
   return (
     <Overlay target={target.current} show={!!error} placement="top-start">
       {({ placement, ...props }) => <StyledErrorBlock {...props}>{error}</StyledErrorBlock>}

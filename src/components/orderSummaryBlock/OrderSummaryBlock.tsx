@@ -6,6 +6,14 @@ import { TotalPrice, StyledOrderSummaryBlock, Title, OrderInfoBlock, Flex } from
 import { ProductInBasket } from '../index';
 import { useAppSelector } from '../../redux/hooks';
 
+type Product = {
+  name: string;
+  price: number;
+  summary: string;
+  img: string;
+  quantity: number;
+};
+
 const OrderSummaryBlock = () => {
   const dispatch = useDispatch();
 
@@ -15,16 +23,8 @@ const OrderSummaryBlock = () => {
     dispatch(fetchProductListAC());
   }, []);
 
-  type product = {
-    name: string;
-    price: number;
-    summary: string;
-    img: string;
-    quantity: number;
-  };
-
   const getSubtotal = productsList.reduce(
-    (total: number, product: product) => total + product.price * product.quantity,
+    (total: number, product: Product) => total + product?.price * product?.quantity,
     0,
   );
 
@@ -33,7 +33,7 @@ const OrderSummaryBlock = () => {
   return (
     <StyledOrderSummaryBlock>
       <Title margin="0 0 10px 0">Order Summary</Title>
-      {productsList.map((el: product) => {
+      {productsList.map((el: Product) => {
         return (
           <ProductInBasket
             key={el.name}

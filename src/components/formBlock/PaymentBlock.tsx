@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { StyledBadge, Title, Button, Flex, StyledFormBlock, StyledBox } from '../../styled';
 import { Navbar, ErrorBlock } from '../index';
 
-import { paymentValidate } from './validate';
-import { setUsersData } from '../../redux/api';
+import { paymentValidate } from '../../helpers/validate';
+import { setUsersData } from '../../api';
 import { BillingValues, ShippingValues } from '../../types/formTypes';
 
 const initialValues = {

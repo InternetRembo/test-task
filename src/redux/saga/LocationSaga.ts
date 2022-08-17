@@ -1,15 +1,28 @@
 import { put, takeEvery, call, select } from 'redux-saga/effects';
-import { FETCH_USER_LOCATION, getUserLocationAC } from '../order-reducer';
-import { getUserLocation } from '../api';
+import { OrderActionTypes, getUserLocationAC } from '../order-reducer';
+import { getUserLocation } from '../../api';
+import { UserLocation } from '../../types/orderTypes';
 
-function* getUserLocationWorker() {
+function* getUserLocationWorker(): any {
   let coords = yield select((state) => state.orderReducer.coords);
 
   const result = yield call(getUserLocation, coords);
 
-  let address = {};
+  type AddressElement = {
+    long_name: string;
+    short_name: string;
+    types: string[];
+  };
 
-  result.data.results[0]['address_components'].forEach((el) => {
+  let address: UserLocation = {
+    flat: '',
+    street: '',
+    city: '',
+    country: '',
+    zip: '',
+  };
+
+  result.data.results[0]['address_components'].forEach((el: AddressElement) => {
     switch (el.types[0]) {
       case 'street_number': {
         address.flat = el.long_name;
@@ -38,5 +51,5 @@ function* getUserLocationWorker() {
 }
 
 export function* getUserLocationWatcher() {
-  yield takeEvery(FETCH_USER_LOCATION, getUserLocationWorker);
+  yield takeEvery(OrderActionTypes.GET_USER_COORDINATES, getUserLocationWorker);
 }

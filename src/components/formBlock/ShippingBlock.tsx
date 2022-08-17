@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar, AddressForm, ErrorBlock } from '../index';
 import { Title, Button, Flex, StyledFormBlock, StyledBox } from '../../styled';
 
-import { shippingValidate } from './validate';
+import { shippingValidate } from '../../helpers/validate';
 import { ShippingValues } from '../../types/formTypes';
 
 let initialValues = {
