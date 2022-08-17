@@ -6,7 +6,7 @@ import { Header, MainContent } from './components';
 import { AppWrapper } from './styled';
 
 import { store } from './redux/redux-store';
-import { getUserCoordinatesAC } from './redux/order-reducer';
+import { getUserCoordinatesAC } from './redux/ducks/location';
 import { useAppDispatch } from './redux/hooks';
 
 type position = {
@@ -35,7 +35,7 @@ const App: FC = () => {
   useEffect(() => {
     getGeo();
     return localStorage.clear();
-  }, []);
+  }, [getGeo()]);
 
   return (
     <Provider store={store}>

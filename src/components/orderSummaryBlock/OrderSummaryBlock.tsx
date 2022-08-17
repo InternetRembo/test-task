@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchProductListAC } from '../../redux/order-reducer';
+import { fetchProductListAC } from '../../redux/ducks/order';
 
 import { TotalPrice, StyledOrderSummaryBlock, Title, OrderInfoBlock, Flex } from '../../styled';
 import { ProductInBasket } from '../index';

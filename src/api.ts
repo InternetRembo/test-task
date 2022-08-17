@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BillingValues, PaymentValues, ShippingValues } from './types/formTypes';
-import { Coordinates, Product } from './types/orderTypes';
+import { Product } from './types/orderTypes';
+import { Coordinates } from './types/locationTypes';
 
 const getProductsUrl = `https://mocki.io/v1/59eb2e27-8414-4add-acf2-55d25692a20d`;
 const postUserData = 'https://demo6921937.mockable.io/';

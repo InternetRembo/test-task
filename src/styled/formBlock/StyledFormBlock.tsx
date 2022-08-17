@@ -11,7 +11,6 @@ export const StyledFormBlock = styled.div<StyledFormProps>`
   width: 60%;
   height: 100%;
   padding: ${(props) => props.padding || '15px 30px'};
-  font-family: Alef;
 
   @media (max-width: ${media.xs}) {
     width: 90vw;

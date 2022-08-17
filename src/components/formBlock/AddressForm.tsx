@@ -16,7 +16,7 @@ type AddressProps = {
 };
 
 const AddressForm = ({ formik, refs }: AddressProps) => {
-  const userLocation = useAppSelector((state) => state.orderReducer.userLocation);
+  const userLocation = useAppSelector((state) => state.locationReducer.userLocation);
 
   const setUserAddress = () => {
     formik.setFieldValue('additionalInfo', userLocation.flat || '');

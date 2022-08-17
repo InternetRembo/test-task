@@ -34,7 +34,7 @@ const PaymentBlock = () => {
     let ParseBillingData: BillingValues = JSON.parse(billingData!);
     let paymentData = { ...formik.values };
 
-    setUsersData(ParseShippingData, ParseBillingData, paymentData);
+    setUsersData(ParseShippingData, ParseBillingData, paymentData).then();
 
     navigate('/order');
   };

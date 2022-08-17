@@ -13,7 +13,6 @@ export const StyledBadge = styled.span<BadgeProps>`
   background-color: ${({ bgColor }) => bgColor || colors.danger};
   display: flex;
   align-items: center;
-  font-family: Arial;
   font-size: 10px;
   text-align: center;
   justify-content: center;

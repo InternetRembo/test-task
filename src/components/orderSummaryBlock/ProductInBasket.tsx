@@ -14,7 +14,7 @@ type ProductProps = {
 const ProductInBasket = ({ img, name, summary, quantity, price }: ProductProps) => {
   return (
     <StyledProduct>
-      <img src={img} alt={'Something is wrong with picture'} />
+      <img src={img} alt={'Something is wrong'} />
 
       <StyledBox width="64%">
         <Title display="block" size="16px" color="gray" margin="0 0 2px 0">
