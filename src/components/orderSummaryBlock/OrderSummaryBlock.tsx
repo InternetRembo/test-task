@@ -45,7 +45,7 @@ const OrderSummaryBlock = () => {
           />
         );
       })}
-      <OrderInfoBlock>
+      <OrderInfoBlock data-testid="OrderInfoBlock">
         <Flex margin="0 0 5px 0" justify="space-between">
           <Title size="14px" color="grey">
             Subtotal

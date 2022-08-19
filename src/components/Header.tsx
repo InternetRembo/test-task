@@ -19,7 +19,7 @@ const Header: FC = () => {
         <StyledBox width="56px" display="inline" position="relative">
           cart&nbsp;
           <i className="bi bi-cart3" />
-          <StyledBadge top="-5px" right="-10px">
+          <StyledBadge data-testid="Counter" top="-5px" right="-10px">
             {productsList.length}
           </StyledBadge>
         </StyledBox>

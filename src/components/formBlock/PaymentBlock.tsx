@@ -45,7 +45,7 @@ const PaymentBlock = () => {
   });
 
   return (
-    <StyledFormBlock>
+    <StyledFormBlock data-testid="Payment">
       <Navbar />
       <Title margin="10px 0 10px 0" size="26px">
         Payment

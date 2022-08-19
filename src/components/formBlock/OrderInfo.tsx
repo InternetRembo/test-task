@@ -26,7 +26,7 @@ const OrderInfo = () => {
       <Title margin="10px 0 10px 0" size="16px" color="black" weight="200">
         Your will recieve an email confirmation shortly to: &nbsp;
         <Title size="16px" decoration="underline" color="blueviolet">
-          {userEmail}
+          {userEmail ? userEmail : 'email'}
         </Title>
       </Title>
 

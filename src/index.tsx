@@ -9,23 +9,18 @@ import { Global } from './styled';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
 import { store } from './redux/redux-store';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
-const Index = () => {
-  return (
-    <>
-      <Provider store={store}>
-        <Global />
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
-    </>
-  );
-};
-
-root.render(<Index />);
-
-export default Index;
+root.render(
+  <>
+    <Provider store={store}>
+      <Global />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </>,
+);

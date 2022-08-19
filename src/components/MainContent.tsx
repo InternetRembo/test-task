@@ -5,7 +5,7 @@ import { StyledMainContent } from '../styled';
 import { ShippingBlock, OrderSummaryBlock, BillingBlock, PaymentBlock, OrderInfo } from './index';
 
 const MainContent = () => (
-  <StyledMainContent>
+  <StyledMainContent data-testid="Main">
     <Routes>
       <Route path="/" element={<ShippingBlock />} />
       <Route path="/billing" element={<BillingBlock />} />

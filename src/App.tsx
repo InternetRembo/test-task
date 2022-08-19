@@ -1,11 +1,9 @@
 import React, { FC } from 'react';
 import { useEffect } from 'react';
-import { Provider } from 'react-redux';
 
 import { Header, MainContent } from './components';
 import { AppWrapper } from './styled';
 
-import { store } from './redux/redux-store';
 import { getUserCoordinatesAC } from './redux/ducks/location';
 import { useAppDispatch } from './redux/hooks';
 
@@ -38,12 +36,10 @@ const App: FC = () => {
   }, [getGeo()]);
 
   return (
-    <Provider store={store}>
-      <AppWrapper>
-        <Header />
-        <MainContent />
-      </AppWrapper>
-    </Provider>
+    <AppWrapper>
+      <Header />
+      <MainContent />
+    </AppWrapper>
   );
 };
 

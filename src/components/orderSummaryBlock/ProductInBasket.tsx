@@ -13,7 +13,7 @@ type ProductProps = {
 
 const ProductInBasket = ({ img, name, summary, quantity, price }: ProductProps) => {
   return (
-    <StyledProduct>
+    <StyledProduct data-testid="ProductInBasket">
       <img src={img} alt={'Something is wrong'} />
 
       <StyledBox width="64%">
