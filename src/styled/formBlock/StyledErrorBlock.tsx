@@ -6,7 +6,6 @@ export const StyledErrorBlock = styled.div`
   height:24px;
   align-items:center;
   font-size:14px;
-  margin:0 0 5px 5px;
   position: absolute;
   background-color: ${colors.backgroundMain};
   padding: 2px 10px;
