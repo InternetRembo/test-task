@@ -1,0 +1,46 @@
+import React, { FC } from 'react';
+import { useEffect } from 'react';
+
+import { Header, MainContent } from './components';
+import { AppWrapper } from './styled';
+
+import { getUserCoordinatesAC } from './redux/ducks/location';
+import { useAppDispatch } from './redux/hooks';
+
+type position = {
+  coords: {
+    latitude: number | null;
+    longitude: number | null;
+  };
+  timestamp: number | null;
+};
+
+const App: FC = () => {
+  const dispatch = useAppDispatch();
+
+  const successCallback = (position: position) => {
+    dispatch(getUserCoordinatesAC({ lat: position.coords.latitude, lng: position.coords.longitude }));
+  };
+
+  const errorCallback = (error: any) => {
+    console.log(error);
+  };
+
+  const getGeo = () => {
+    return navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  };
+
+  useEffect(() => {
+    getGeo();
+    return localStorage.clear();
+  }, [getGeo()]);
+
+  return (
+    <AppWrapper>
+      <Header />
+      <MainContent />
+    </AppWrapper>
+  );
+};
+
+export default App;
