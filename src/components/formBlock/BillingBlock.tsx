@@ -88,7 +88,9 @@ const BillingBlock = () => {
             Billing Contact
           </Title>
 
-          {formik.errors.name && formik.touched.name && <ErrorBlock error={formik.errors.name} target={refs.nameRef} />}
+          {formik.errors.name && formik.touched.name && (
+            <ErrorBlock data-testid="errorMassage" error={formik.errors.name} target={refs.nameRef} />
+          )}
 
           <Form.Control
             ref={refs.nameRef}
@@ -104,7 +106,7 @@ const BillingBlock = () => {
         </Form.Group>
         <Form.Group>
           {formik.errors.email && formik.touched.email && (
-            <ErrorBlock error={formik.errors.email} target={refs.emailRef} />
+            <ErrorBlock data-testid="errorMassage" error={formik.errors.email} target={refs.emailRef} />
           )}
 
           <Form.Control
@@ -121,7 +123,7 @@ const BillingBlock = () => {
         </Form.Group>
 
         <AddressForm refs={refs} formik={formik} />
-        <Button type="submit"> Continue </Button>
+        <Button type="submit">Continue</Button>
       </Form>
     </StyledFormBlock>
   );

@@ -20,7 +20,7 @@ it('is order info render correctly', () => {
 describe('async mounting product list', () => {
   let response;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     response = {
       data: [
         {
@@ -33,7 +33,7 @@ describe('async mounting product list', () => {
       ],
     };
 
-    axios.get.mockReturnValue(response);
+    await axios.get.mockReturnValue(response);
 
     render(
       <Provider store={store}>

@@ -18,12 +18,12 @@ type AddressProps = {
 const AddressForm = ({ formik, refs }: AddressProps) => {
   const userLocation = useAppSelector((state) => state.locationReducer.userLocation);
 
-  const setUserAddress = () => {
-    formik.setFieldValue('additionalInfo', userLocation.flat || '');
-    formik.setFieldValue('street', userLocation.street || '');
-    formik.setFieldValue('city', userLocation.city || '');
-    formik.setFieldValue('country', userLocation.country || '');
-    formik.setFieldValue('zip', userLocation.zip || '');
+  const setUserAddress = async () => {
+    await formik.setFieldValue('additionalInfo', userLocation.flat || '');
+    await formik.setFieldValue('street', userLocation.street || '');
+    await formik.setFieldValue('city', userLocation.city || '');
+    await formik.setFieldValue('country', userLocation.country || '');
+    await formik.setFieldValue('zip', userLocation.zip || '');
   };
 
   useEffect(() => {
@@ -94,6 +94,7 @@ const AddressForm = ({ formik, refs }: AddressProps) => {
 
       <Flex>
         <Form.Select
+          data-testid="selector"
           style={{ minWidth: '50%' }}
           ref={refs.countryRef}
           className="mb-3"

@@ -8,6 +8,9 @@ import { store } from '../../../redux/redux-store';
 const localStorageMock = (() => {
   let store = {};
   return {
+    getItem(key) {
+      return store[key];
+    },
     setItem(key, value) {
       store[key] = value.toString();
     },
@@ -16,9 +19,11 @@ const localStorageMock = (() => {
     },
   };
 })();
+
 Object.defineProperty(window, 'localStorage', {
   value: localStorageMock,
 });
+
 test('is order screen has mount', () => {
   localStorageMock.setItem('billingData', JSON.stringify({ email: 'email' }));
   render(

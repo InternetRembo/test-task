@@ -34,9 +34,13 @@ const PaymentBlock = () => {
     let ParseBillingData: BillingValues = JSON.parse(billingData!);
     let paymentData = { ...formik.values };
 
-    setUsersData(ParseShippingData, ParseBillingData, paymentData).then();
-
-    navigate('/order');
+    if (ParseShippingData && ParseBillingData) {
+      setUsersData(ParseShippingData, ParseBillingData, paymentData).then();
+      navigate('/order');
+    } else {
+      alert('Oops, it looks like you didnt specify all the required information');
+      navigate('/');
+    }
   };
   const formik = useFormik({
     initialValues,
@@ -50,7 +54,6 @@ const PaymentBlock = () => {
       <Title margin="10px 0 10px 0" size="26px">
         Payment
       </Title>
-
       <Title famaly="none" color="grey" margin="0px 0 15px 0" size="16px">
         <Title position="relative" color="black" size="22px">
           <i className="bi bi-lock">
@@ -137,6 +140,7 @@ const PaymentBlock = () => {
             )}
             <StyledBox width="90px">
               <Form.Control
+                data-testid="code"
                 ref={refs.securityCodeRef}
                 id="securityCode"
                 name="securityCode"
