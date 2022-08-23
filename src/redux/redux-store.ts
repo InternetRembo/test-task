@@ -1,9 +1,9 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { rootwatcher } from './indexSaga';
 
 import orderReducer from './ducks/order';
 import locationReducer from './ducks/location';
-import { rootwatcher } from './indexSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 

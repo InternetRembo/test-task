@@ -1,5 +1,4 @@
-import orderReducer, { OrderActionTypes } from './order';
-import locationReducer from './location';
+import orderReducer, { OrderActionTypes } from '../../redux/ducks/order';
 
 describe('order duck reducer', () => {
   let testState = {
@@ -8,13 +7,12 @@ describe('order duck reducer', () => {
     taxes: 0,
   };
 
-
-  test('should return initial state when the action is unexpected ', () => {
+  it('should return initial state when the action is unexpected ', () => {
     const testReducer = orderReducer(testState, {});
     expect(testReducer).toEqual(testState);
   });
 
-  test('state.productList should be updated when the action type is SET_PRODUCT_LIST ', () => {
+  it('state.productList should be updated when the action type is SET_PRODUCT_LIST ', () => {
     let testPayload = [
       {
         name: 'string',

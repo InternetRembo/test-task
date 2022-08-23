@@ -1,3 +1,5 @@
+import { call, put, select, takeEvery } from 'redux-saga/effects';
+
 import {
   Coordinates,
   GetUserCoordinatesAction,
@@ -6,7 +8,6 @@ import {
   LocationState,
   UserLocation,
 } from '../../types/locationTypes';
-import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { getUserLocation } from '../../api';
 
 export enum LocationActionTypes {

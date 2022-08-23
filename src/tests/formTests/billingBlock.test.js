@@ -1,10 +1,12 @@
+import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import React from 'react';
-import { BillingBlock, MainContent } from '../../index';
 import { Provider } from 'react-redux';
-import { store } from '../../../redux/redux-store';
 import userEvent from '@testing-library/user-event';
+
+import { BillingBlock, MainContent } from '../../components';
+
+import { store } from '../../redux/redux-store';
 
 describe('is billing components has mount', () => {
   beforeEach(async () => {
@@ -19,12 +21,12 @@ describe('is billing components has mount', () => {
     );
   });
 
-  test('is billing form has mount', () => {
+  it(' should mount billing component', () => {
     const Shipping = screen.getByText(/Billing Information/i);
     expect(Shipping).toBeInTheDocument();
   });
 
-  test('is address form has mount', () => {
+  it('should mount address form  ', () => {
     const Address = screen.getByText(/Address/i);
     expect(Address).toBeInTheDocument();
   });
@@ -46,12 +48,12 @@ describe('is billing form submit work correctly', () => {
     );
   });
 
-  test('is submit dos not happen if inputs are empty', async () => {
+  it('submit should not happen if inputs are empty', async () => {
     await user.click(screen.getByText('Continue'));
     expect(await screen.queryByText(/Cardholder Name/i)).not.toBeInTheDocument();
   });
 
-  test('is button redirect user to the payment page after successful submit', async () => {
+  it('button should redirect user to the payment page after successful submit', async () => {
     await user.type(screen.getByPlaceholderText(/Full name/i), 'Petro Petrenko');
     await user.type(screen.getByPlaceholderText(/Email Address/i), 'petro.ptr@test.com');
     await user.type(screen.getByPlaceholderText(/Street Address/i), 'street');
@@ -64,7 +66,7 @@ describe('is billing form submit work correctly', () => {
     expect(screen.queryByText(/Cardholder Name/i)).toBeInTheDocument();
   });
 
-  test('is submit dos not happen if inputs values are incorrect', async () => {
+  it('submit should not happen if inputs values are incorrect', async () => {
     await user.type(screen.getByPlaceholderText(/Full name/i), 'P.P');
     await user.type(screen.getByPlaceholderText(/Email Address/i), 'petro.petrenko');
     await user.type(screen.getByPlaceholderText(/Street Address/i), '0123');

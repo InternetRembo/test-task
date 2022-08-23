@@ -1,11 +1,13 @@
-import { act, render, screen } from '@testing-library/react';
-import { MainContent } from '../index';
-import { store } from '../../redux/redux-store';
-import { Provider } from 'react-redux';
 import React from 'react';
+import { act, render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-test('is MainContent has mount', async () => {
+import { MainContent } from '../components';
+
+import { store } from '../redux/redux-store';
+
+it('should mount MainContent', async () => {
   await act(async () =>
     render(
       <Provider store={store}>

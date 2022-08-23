@@ -1,3 +1,5 @@
+import { call, put, takeEvery } from 'redux-saga/effects';
+
 import {
   FetchProductListAction,
   OrderActions,
@@ -5,7 +7,6 @@ import {
   ProductList,
   SetProductListAction,
 } from '../../types/orderTypes';
-import { call, put, takeEvery } from 'redux-saga/effects';
 import { fetchProducts } from '../../api';
 
 export enum OrderActionTypes {

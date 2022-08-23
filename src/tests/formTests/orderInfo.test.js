@@ -1,9 +1,11 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import React from 'react';
-import { OrderInfo } from '../../index';
 import { Provider } from 'react-redux';
-import { store } from '../../../redux/redux-store';
+
+import { OrderInfo } from '../../components';
+
+import { store } from '../../redux/redux-store';
 
 const localStorageMock = (() => {
   let store = {};
@@ -24,7 +26,7 @@ Object.defineProperty(window, 'localStorage', {
   value: localStorageMock,
 });
 
-test('is order screen has mount', () => {
+it('should mount order screen ', () => {
   localStorageMock.setItem('billingData', JSON.stringify({ email: 'email' }));
   render(
     <Provider store={store}>

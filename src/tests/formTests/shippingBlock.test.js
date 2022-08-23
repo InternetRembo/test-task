@@ -1,10 +1,12 @@
+import React from 'react';
 import { act, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import React from 'react';
-import { MainContent, ShippingBlock } from '../../index';
 import { Provider } from 'react-redux';
-import { store } from '../../../redux/redux-store';
 import userEvent from '@testing-library/user-event';
+
+import { MainContent, ShippingBlock } from '../../components';
+
+import { store } from '../../redux/redux-store';
 
 describe('is shipping components has mount', () => {
   beforeEach(async () => {
@@ -19,12 +21,12 @@ describe('is shipping components has mount', () => {
     );
   });
 
-  test('is shipping form has mount', async () => {
+  it('should mount shipping form ', async () => {
     const Shipping = screen.getByText(/Shipping Info/i);
     expect(Shipping).toBeInTheDocument();
   });
 
-  test('is address form has mount', () => {
+  it('should mount address form ', () => {
     const Address = screen.getByText(/Address/i);
     expect(Address).toBeInTheDocument();
   });
@@ -45,7 +47,7 @@ describe('is shipping form submit work correctly', () => {
     );
   });
 
-  test('is submit dos not happen if inputs are empty', async () => {
+  it('submit should not happen if inputs are empty', async () => {
     await user.click(screen.getByText('Continue'));
     expect(screen.queryByText(/Billing Information/i)).not.toBeInTheDocument();
   });
@@ -63,7 +65,7 @@ describe('is shipping form submit work correctly', () => {
     expect(screen.queryByText(/Billing Information/i)).toBeInTheDocument();
   });
 
-  test('is submit dos not happen if inputs values are incorrect', async () => {
+  it('submit should not happen if inputs values are incorrect', async () => {
     await user.type(screen.getByPlaceholderText(/Full name/i), 'Petro7Petrenko');
     await user.type(screen.getByPlaceholderText(/Daytime Phone/i), '0661155156646484');
     await user.type(screen.getByPlaceholderText(/Street Address/i), 'A');

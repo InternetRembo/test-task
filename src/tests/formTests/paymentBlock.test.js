@@ -1,12 +1,14 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import React from 'react';
-import { MainContent, PaymentBlock } from '../../index';
 import { Provider } from 'react-redux';
-import { store } from '../../../redux/redux-store';
 import userEvent from '@testing-library/user-event';
 
-test('is payment form has mount', () => {
+import { MainContent, PaymentBlock } from '../../components';
+
+import { store } from '../../redux/redux-store';
+
+it('should mount payment form', () => {
   render(
     <Provider store={store}>
       <MemoryRouter>
@@ -33,11 +35,11 @@ describe('is payment form submit work correctly', () => {
       </Provider>,
     );
   });
-  test('is submit dos not happen if inputs are empty', async () => {
+  it('submit should not happen if inputs are empty', async () => {
     await user.click(screen.getByText('Pay Securely'));
     expect(screen.queryByText('Thank you for your order!')).not.toBeInTheDocument();
   });
-  test('is button redirect user to the order page after successful submit', async () => {
+  it('button should redirect user to the order page after successful submit', async () => {
     await user.type(screen.getByPlaceholderText(/Name as it appears on your card/i), 'PETRO PETRENKO');
     await user.type(screen.getByPlaceholderText(/XXXX XXXX XXXX XXXX XXXX/i), '4444111144441111');
     await user.type(screen.getByPlaceholderText('MM/YY'), '1234');
@@ -47,7 +49,7 @@ describe('is payment form submit work correctly', () => {
 
     expect(screen.queryByText(/Cardholder Name/i)).not.toBeInTheDocument();
   });
-  test('is button redirect user to the order page after successful submit', async () => {
+  it('button should redirect user to the order page after successful submit', async () => {
     await user.type(screen.getByPlaceholderText(/Name as it appears on your card/i), 'petro petrenko');
     await user.type(screen.getByPlaceholderText(/XXXX XXXX XXXX XXXX XXXX/i), '12341234');
     await user.type(screen.getByPlaceholderText('MM/YY'), '1w23');

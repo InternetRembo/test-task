@@ -1,4 +1,4 @@
-import locationReducer, { LocationActionTypes } from './location';
+import locationReducer, { LocationActionTypes } from '../../redux/ducks/location';
 
 let testState = {
   userLocation: {
@@ -12,12 +12,12 @@ let testState = {
 };
 
 describe('location duck reducer', () => {
-  test('should return initial state when the action is unexpected ', () => {
+  it('should return initial state when the action is unexpected ', () => {
     const testReducer = locationReducer(testState, {});
     expect(testReducer).toEqual(testState);
   });
 
-  test('state.userLocation should be updated when the action type is GET_USER_LOCATION ', () => {
+  it('state.userLocation should be updated when the action type is GET_USER_LOCATION ', () => {
     const testReducer = locationReducer(testState, {
       type: LocationActionTypes.GET_USER_LOCATION,
       payload: {
@@ -32,7 +32,7 @@ describe('location duck reducer', () => {
     expect(testReducer.coords).toEqual(testState.coords);
   });
 
-  test('state.coords should be updated when the action type is GET_USER_COORDINATES', () => {
+  it('state.coords should be updated when the action type is GET_USER_COORDINATES', () => {
     const testReducer = locationReducer(testState, {
       type: LocationActionTypes.GET_USER_COORDINATES,
       payload: {
